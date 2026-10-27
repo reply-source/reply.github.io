@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GAT ME | Landing Page</title>
+    <meta
+      name="description"
+      content="GAT ME helps teams streamline daily workflows, automate routine tasks, and move faster with less friction."
+    />
+    <style>
+      :root {
+        --bg: #07111f;
+        --panel: #0d1b2a;
+        --panel-2: #12273d;
+        --card: rgba(18, 39, 61, 0.8);
+        --line: rgba(148, 163, 184, 0.2);
+        --text: #e5eefb;
+        --muted: #a7b7d0;
+        --primary: #5eead4;
+        --primary-2: #7c9cff;
+        --accent: #fbbf24;
+        --shadow: rgba(12, 20, 35, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(124, 156, 255, 0.18), transparent 32%),
+          radial-gradient(circle at bottom right, rgba(94, 234, 212, 0.18), transparent 25%),
+          var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: rgba(7, 17, 31, 0.72);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #05111b;
+        font-weight: 800;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.95rem 1.5rem;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #05111b;
+        box-shadow: 0 14px 25px rgba(94, 234, 212, 0.25);
+      }
+
+      .btn-secondary {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 78px 0 40px;
+      }
+
+      .hero-shell {
+        display: grid;
+        grid-template-columns: 1.12fr 0.88fr;
+        gap: 34px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.38rem 0.76rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--primary);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 24px 0 18px;
+        font-size: clamp(2.7rem, 5vw, 5rem);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+      }
+
+      .hero-copy p {
+        margin: 0;
+        max-width: 610px;
+        color: var(--muted);
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .mini-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .mini-proof strong {
+        color: var(--text);
+        display: block;
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+
+      .hero-panel {
+        position: relative;
+        background: linear-gradient(180deg, rgba(18, 39, 61, 0.9), rgba(10, 18, 30, 0.96));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: 0 28px 70px var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: 18px 18px auto auto;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(94, 234, 212, 0.24), transparent 65%);
+      }
+
+      .panel-inner {
+        position: relative;
+        padding: 24px;
+      }
+
+      .window-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 16px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .dot.red { background: #ff5f57; }
+      .dot.yellow { background: #ffbd2e; }
+      .dot.green { background: #28c840; }
+
+      .dashboard {
+        padding: 18px;
+        background: rgba(9, 14, 22, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .stat-value {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .stat-label {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .chart {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .chart-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 14px;
+      }
+
+      .chart-label {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .chart-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .bars {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 9px;
+        align-items: end;
+        height: 140px;
+      }
+
+      .bar {
+        border-radius: 10px 10px 0 0;
+        background: linear-gradient(180deg, var(--primary), var(--primary-2));
+        opacity: 0.82;
+      }
+
+      .bar:nth-child(odd) {
+        background: linear-gradient(180deg, #6ee7d6, #7c9cff);
+      }
+
+      .bar:nth-child(3n) {
+        background: linear-gradient(180deg, #83e4ff, #5eead4);
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .section-head {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .section-head h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 3vw, 3rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-head p {
+        margin: 0 auto;
+        max-width: 720px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .feature {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 18px 30px rgba(2, 6, 23, 0.28);
+      }
+
+      .icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 18px;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.2), rgba(124, 156, 255, 0.2));
+        border: 1px solid rgba(94, 234, 212, 0.3);
+        font-size: 1.4rem;
+      }
+
+      .feature h3 {
+        margin: 0 0 12px;
+        font-size: 1.3rem;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .cta-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.08), rgba(124, 156, 255, 0.08));
+        border-radius: 28px;
+      }
+
+      .cta-box h3 {
+        margin: 0 0 10px;
+        font-size: clamp(1.7rem, 2.2vw, 2.4rem);
+        line-height: 1.1;
+      }
+
+      .cta-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 28px 0 50px;
+        text-align: center;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        margin-top: 30px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-shell,
+        .feature-grid,
+        .cta-box {
+          grid-template-columns: 1fr;
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .cta-box {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav {
+          padding: 12px 0;
+        }
+
+        .nav-actions {
+          display: none;
+        }
+
+        .stats-row {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 38px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#" class="brand" aria-label="GAT ME home">
+          <span class="brand-mark">G</span>
+          <span>GAT ME</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#features">Features</a>
+          <a href="#results">Results</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#contact" class="btn btn-secondary">Book a Demo</a>
+          <a href="#contact" class="btn btn-primary">Start Free</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-shell">
+          <div class="hero-copy">
+            <div class="eyebrow">Built for speed</div>
+            <h1>Turn busywork into momentum.</h1>
+            <p>
+              GAT ME gives your team one simple place to automate repetitive tasks,
+              surface the right data instantly, and keep projects moving without the usual bottlenecks.
+            </p>
+
+            <div class="cta-row">
+              <a href="#contact" class="btn btn-primary">Launch your workflow</a>
+              <a href="#features" class="btn btn-secondary">See how it works</a>
+            </div>
+
+            <div class="mini-proof">
+              <div>
+                <strong>3x faster</strong>
+                execution cycle
+              </div>
+              <div>
+                <strong>94%</strong>
+                team adoption
+              </div>
+              <div>
+                <strong>24/7</strong>
+                visibility
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel" aria-label="Product dashboard preview">
+            <div class="panel-inner">
+              <div class="window-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+
+              <div class="dashboard">
+                <div class="stats-row">
+                  <div class="stat-card">
+                    <span class="stat-value">1.2K</span>
+                    <span class="stat-label">Tasks automated</span>
+                  </div>
+                  <div class="stat-card">
+                    <span class="stat-value">89%</span>
+                    <span class="stat-label">Faster delivery</span>
+                  </div>
+                  <div class="stat-card">
+                    <span class="stat-value">42m</span>
+                    <span class="stat-label">Saved weekly</span>
+                  </div>
+                </div>
+
+                <div class="chart">
+                  <div class="chart-top">
+                    <span class="chart-label">Operations</span>
+                    <span class="chart-value">+64%</span>
+                  </div>
+                  <div class="bars" aria-hidden="true">
+                    <span class="bar" style="height: 40%"></span>
+                    <span class="bar" style="height: 52%"></span>
+                    <span class="bar" style="height: 48%"></span>
+                    <span class="bar" style="height: 72%"></span>
+                    <span class="bar" style="height: 66%"></span>
+                    <span class="bar" style="height: 88%"></span>
+                    <span class="bar" style="height: 100%"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-head">
+            <h2>Everything your team needs to move faster.</h2>
+            <p>
+              Replace manual handoffs with automated workflows, real-time visibility, and smarter decisions.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="icon">⚡</div>
+              <h3>Automated workflows</h3>
+              <p>
+                Connect the tools your team already uses and automate repetitive work from intake to delivery.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="icon">📊</div>
+              <h3>Real-time insights</h3>
+              <p>
+                Track progress, identify bottlenecks, and keep stakeholders aligned with live operational data.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="icon">🔒</div>
+              <h3>Reliable by design</h3>
+              <p>
+                Keep your operations secure and scalable with central controls, permission layers, and dependable automation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="results">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>Built to help teams do more with less friction.</h3>
+              <p>From project intake to execution and reporting, GAT ME keeps every step aligned.</p>
+            </div>
+            <a href="#contact" class="btn btn-primary">Get started</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container">
+        © 2026 GAT ME • hello@gatme.example • Ready when you are.
+      </div>
+    </footer>
+  </body>
+</html>
